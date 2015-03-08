@@ -1,4 +1,4 @@
-﻿Build started 2015-03-08 10:08:42 AM.
+﻿Build started 2015-03-08 11:21:45 AM.
      1>Project "C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\EHW15B\EHW15B.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /I"C:\myo-sdk-win-0.8.1\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
@@ -13,11 +13,10 @@
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\Release\EHW15B.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\SFML\lib /LIBPATH:"C:\myo-sdk-win-0.8.1\lib" myo32.lib "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" "sfml-audio.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\Release\EHW15B.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\Release\EHW15B.lib" /MACHINE:X86 /SAFESEH Release\Main.obj
          Generating code
-     1>c:\users\robert\documents\github\enghackw15\ehw15b\ehw15b\gameengine.h(182): warning C4715: 'GameEngine::getNextNote' : not all control paths return a value
          Finished generating code
          EHW15B.vcxproj -> C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\Release\EHW15B.exe
      1>Done Building Project "C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\EHW15B\EHW15B.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.15
+Time Elapsed 00:00:01.89

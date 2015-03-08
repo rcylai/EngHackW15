@@ -217,32 +217,32 @@ public:
 		{
 			myo::Pose previousPose = currentPose;
 			currentPose = collector.getPose();
-			if (getNextNote().state == 1)
+			if (onScreen.back().state == 1)
 			{
 				if (currentPose != previousPose && currentPose != myo::Pose::rest)
 				{
 					//std::cout << currentPose.toString() << " " << previousPose.toString() << "";
-					std::cout << activeColumn << " " << getNextNote().getColumn() << std::endl;
-					if (currentPose == getNextNote().getPose() && activeColumn == getNextNote().getColumn())
+					std::cout << activeColumn << " " << onScreen.back().getColumn() << std::endl;
+					if (currentPose == onScreen.back().getPose() && activeColumn == onScreen.back().getColumn())
 					{
 						
-						if (abs(time - getNextNote().getTime()) < 100)
+						if (abs(time - onScreen.back().getTime()) < 125)
 						{
 							score += 300;
-							getNextNote().setState(2);
-							getNextNote().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setState(2);
+							onScreen.back().setColor(sf::Color(128, 128, 255));
 						}
-						else if (abs(time - getNextNote().getTime()) < 200)
+						else if (abs(time - onScreen.back().getTime()) < 250)
 						{
 							score += 200;
-							getNextNote().setState(2);
-							getNextNote().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setState(2);
+							onScreen.back().setColor(sf::Color(128, 128, 255));
 						}
-						else if (abs(time - getNextNote().getTime()) < 300)
+						else if (abs(time - onScreen.back().getTime()) < 500)
 						{
 							score += 100;
-							getNextNote().setState(2);
-							getNextNote().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setState(2);
+							onScreen.back().setColor(sf::Color(128, 128, 255));
 						}
 						
 						//std::cout << score << std::endl;
@@ -263,11 +263,11 @@ public:
 		{
 			for (int i = 0; i <= onScreen.size() - 1; i++)
 			{
-				if (abs(onScreen[i].getTime() - time) <= 1000 && onScreen[i].state == 0)
+				if (abs(onScreen[i].getTime() - time) <= 700 && onScreen[i].state == 0)
 				{
 					onScreen[i].state = 1;
 				}
-				else if (onScreen[i].state == 1 && time - onScreen[i].getTime() > 300)
+				else if (onScreen[i].state == 1 && time - onScreen[i].getTime() > 500)
 				{
 					onScreen[i].state = 2;
 					//onScreen[i].setColor(sf::Color(255, 128, 128));
