@@ -110,7 +110,7 @@ int main()
 			//std::cout << collector.getPose().toString();
 			//std::cout << "wtf" << std::endl;
 
-			std::ofstream writer("bla.txt");
+			//std::ofstream writer("bla.txt");
 
 			sf::Event event;
 			while (window->pollEvent(event)) {
