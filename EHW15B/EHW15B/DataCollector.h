@@ -38,9 +38,9 @@ public:
 			1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
 
 		// Convert the floating point angles in radians to a scale from 0 to 18.
-		roll_w = static_cast<int>((roll + (float)M_PI) / (M_PI * 2.0f) * 18);
-		pitch_w = static_cast<int>((pitch + (float)M_PI / 2.0f) / M_PI * 18);
-		yaw_w = static_cast<int>((yaw + (float)M_PI) / (M_PI * 2.0f) * 18);
+		roll_w = static_cast<int>((roll + (float)M_PI) / (M_PI * 2.0f) * 96);
+		pitch_w = static_cast<int>((pitch + (float)M_PI / 2.0f) / M_PI * 96);
+		yaw_w = static_cast<int>((yaw + (float)M_PI) / (M_PI * 2.0f) * 960);
 	}
 
 	// onPose() is called whenever the Myo detects that the person wearing it has changed their pose, for example,
@@ -61,7 +61,7 @@ public:
 		else {
 			// Tell the Myo to stay unlocked only for a short period. This allows the Myo to stay unlocked while poses
 			// are being performed, but lock after inactivity.
-			myo->unlock(myo::Myo::unlockTimed);
+			myo->unlock(myo::Myo::unlockHold);
 		}
 	}
 
@@ -103,9 +103,9 @@ public:
 		std::cout << '\r';
 
 		// Print out the orientation. Orientation data is always available, even if no arm is currently recognized.
-		std::cout << '[' << std::string(roll_w, '*') << std::string(18 - roll_w, ' ') << ']'
-			<< '[' << std::string(pitch_w, '*') << std::string(18 - pitch_w, ' ') << ']'
-			<< '[' << std::string(yaw_w, '*') << std::string(18 - yaw_w, ' ') << ']';
+		std::cout << '[' << std::string(roll_w, '*') << std::string(100 - roll_w, ' ') << ']'
+			<< '[' << std::string(pitch_w, '*') << std::string(100 - pitch_w, ' ') << ']'
+			<< '[' << std::string(yaw_w, '*') << std::string(100 - yaw_w, ' ') << ']';
 
 		if (onArm) {
 			// Print out the lock state, the currently recognized pose, and which arm Myo is being worn on.

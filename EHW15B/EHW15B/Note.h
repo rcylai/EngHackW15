@@ -9,6 +9,7 @@ private:
 	long time; //ms
 	int column; //0123
 	myo::Pose pose;
+	
 public:
 	Note(long time, int column, myo::Pose pose, sf::Texture& texture)
 	{
@@ -18,6 +19,11 @@ public:
 		this->setTexture(texture);
 		this->setScale(sf::Vector2f(0.2, 0.2));
 		this->setOrigin(500, 500);
+	}
+	int state = 0; // before, during, after
+
+	void setState(int state){
+		this->state = state;
 	}
 	
 	long getTime()
