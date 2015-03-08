@@ -222,7 +222,7 @@ public:
 				if (currentPose != previousPose && currentPose != myo::Pose::rest)
 				{
 					//std::cout << currentPose.toString() << " " << previousPose.toString() << "";
-					std::cout << activeColumn << " " << onScreen.back().getColumn() << std::endl;
+					//std::cout << activeColumn << " " << onScreen.back().getColumn() << std::endl;
 					if (currentPose == onScreen.back().getPose() && activeColumn == onScreen.back().getColumn())
 					{
 						
@@ -230,19 +230,19 @@ public:
 						{
 							score += 300;
 							onScreen.back().setState(2);
-							onScreen.back().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setColor(sf::Color(144, 255, 144));
 						}
 						else if (abs(time - onScreen.back().getTime()) < 250)
 						{
 							score += 200;
 							onScreen.back().setState(2);
-							onScreen.back().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setColor(sf::Color(144, 255, 144));
 						}
 						else if (abs(time - onScreen.back().getTime()) < 500)
 						{
 							score += 100;
 							onScreen.back().setState(2);
-							onScreen.back().setColor(sf::Color(128, 128, 255));
+							onScreen.back().setColor(sf::Color(144, 255, 144));
 						}
 						
 						//std::cout << score << std::endl;

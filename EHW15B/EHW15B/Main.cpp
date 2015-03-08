@@ -110,6 +110,8 @@ int main()
 			//std::cout << collector.getPose().toString();
 			//std::cout << "wtf" << std::endl;
 
+			std::ofstream writer("bla.txt");
+
 			sf::Event event;
 			while (window->pollEvent(event)) {
 				if (event.type == sf::Event::Closed)
@@ -119,6 +121,15 @@ int main()
 				if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
 				{
 					window->close();
+				}
+				if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::G))
+				{
+					clock.restart();
+					state = 2;
+				}
+				if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::T))
+				{
+					std::cout << elapsedTime << std::endl;
 				}
 			}
 
