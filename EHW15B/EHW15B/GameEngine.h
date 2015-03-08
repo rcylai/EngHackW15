@@ -19,10 +19,17 @@ private:
 public:
 	GameEngine(sf::RenderWindow *window)
 	{
+		//window->clear(sf::Color(255, 255, 255));
+
 		this->window = window;
-		/*if (!ot[0].loadFromFile("Images/fist.png")) {
+		
+		/*ot[0].loadFromFile("Images/fist.png");
+		system("pause");*/
+
+		if (!ot[0].loadFromFile("Images/fist.png")) {
 			std::cerr << "Could not load fist" << std::endl;
 		}
+		
 		if (!ot[1].loadFromFile("Images/spread.png")) {
 			std::cerr << "Could not load spread" << std::endl;
 		}
@@ -31,7 +38,7 @@ public:
 		}
 		if (!ot[3].loadFromFile("Images/out.png")) {
 			std::cerr << "Could not load out" << std::endl;
-		}*/
+		}
 	}
 	void setTime(long time)
 	{
@@ -39,33 +46,42 @@ public:
 	}
 	void drawNotes()
 	{
-		for (int i = 0; i <= onScreen.size() - 1; i++)
+		if (onScreen.size() > 0)
 		{
-			window->draw(onScreen[i]);
+			for (int i = 0; i <= onScreen.size() - 1; i++)
+			{
+				std::cout << onScreen[i].getPosition().x << " | " << onScreen[i].getPosition().y << std::endl;
+				window->draw(onScreen[i]);
+			}
 		}
 	}
 	void killNotes()
 	{
-		if (time + 304 > onScreen[onScreen.size() - 1].getTime())
+		if (onScreen.size() > 0 && time - 304 > onScreen[onScreen.size() - 1].getTime())
 		{
 			onScreen.pop_back();
 		}
+		//system("pause");
 	}
 	void loadNotes()
 	{
-		if (time - 2000 > map.front().getTime())
+		if (map.empty() == false && time + 2000 >= map.front().getTime())
 		{
 			auto it = onScreen.begin();
 			it = onScreen.insert(it, map.front());
 			map.pop();
+			//std::cout << onScreen.size();
 		}
 	}
 
 	void setNotePositions()
 	{
-		for (int i = 0; i <= onScreen.size() - 1; i++)
+		if (onScreen.size() > 0)
 		{
-			onScreen[i].setPosition(sf::Vector2f(173 + onScreen[i].getColumn() * 340, 667 - (onScreen[i].getTime() - time) / 3));
+			for (int i = 0; i <= onScreen.size() - 1; i++)
+			{
+				onScreen[i].setPosition(sf::Vector2f(173 + onScreen[i].getColumn() * 340, 667 - (onScreen[i].getTime() - time) / 3));
+			}
 		}
 	}
 
@@ -89,15 +105,13 @@ public:
 		long t;
 		int c, p;
 		myo::Pose pp;
-		sf::Texture tx;
 
 		mapReader >> t >> c >> p;
 		while (!mapReader.fail())
-		{			
+		{		
 			if (p == 0) // fist, spread, in, out
 			{
 				pp = myo::Pose::fist;
-				tx = texture
 			}
 			else if (p == 1)
 			{
@@ -115,7 +129,7 @@ public:
 			{
 				//die
 			}
-			Note newNote(t, c, pp);
+			Note newNote(t, c, pp, ot[p]);
 			map.push(newNote);
 			mapReader >> t >> c >> p;
 		}

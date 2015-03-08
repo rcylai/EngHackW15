@@ -29,7 +29,7 @@ int main()
 
 		GameEngine ge(window);
 
-		//ge.loadMap("map.txt");
+		ge.loadMap("map.txt");
 		//std::cout << ge.getTitle() << std::endl;
 		//ge.spitOutMap();
 
@@ -68,6 +68,8 @@ int main()
 		//long msCount = 0;
 		long elapsedTime = 0;
 
+		//ge.loadMap("map.txt");
+
 		// Finally we enter our main loop.
 		while (window->isOpen()) {
 			//myo->unlock(myo::Myo::unlockHold);
@@ -79,6 +81,7 @@ int main()
 			//collector.print();
 
 			//std::cout << collector.getPose().toString();
+			//std::cout << "wtf" << std::endl;
 
 			sf::Event event;
 			while (window->pollEvent(event)) {
@@ -91,14 +94,17 @@ int main()
 					window->close();
 				}
 			}
-			//std::cout << elapsedTime;
-			window->clear(sf::Color(255, 255, 255));
 
-			//draw stuff here
+				ge.update(elapsedTime);
+				
 
-			window->display();
+				//std::cout << elapsedTime;
+				window->clear(sf::Color(255, 255, 255));
 
-			elapsedTime += clock.restart().asMilliseconds();
+				ge.drawNotes();
+
+				window->display();
+				elapsedTime += clock.restart().asMilliseconds();
 			// If a standard exception occurred, we print out its message and exit.
 		}
 	}
