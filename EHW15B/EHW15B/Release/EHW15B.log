@@ -1,8 +1,9 @@
-﻿Build started 2015-03-08 12:04:37 AM.
+﻿Build started 2015-03-08 12:46:17 AM.
      1>Project "C:\Users\Robert\Documents\GitHub\EngHackW15\EHW15B\EHW15B\EHW15B.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /I"C:\myo-sdk-win-0.8.1\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
+     1>c:\users\robert\documents\github\enghackw15\ehw15b\ehw15b\Note.h(19): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\robert\documents\github\enghackw15\ehw15b\ehw15b\GameEngine.h(51): warning C4018: '<=' : signed/unsigned mismatch
      1>c:\users\robert\documents\github\enghackw15\ehw15b\ehw15b\GameEngine.h(81): warning C4018: '<=' : signed/unsigned mismatch
      1>c:\users\robert\documents\github\enghackw15\ehw15b\ehw15b\GameEngine.h(83): warning C4244: 'argument' : conversion from 'long' to 'float', possible loss of data
@@ -16,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.61
+Time Elapsed 00:00:01.75

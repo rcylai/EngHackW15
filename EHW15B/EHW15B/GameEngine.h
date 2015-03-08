@@ -50,14 +50,14 @@ public:
 		{
 			for (int i = 0; i <= onScreen.size() - 1; i++)
 			{
-				std::cout << onScreen[i].getPosition().x << " | " << onScreen[i].getPosition().y << std::endl;
+				//std::cout << onScreen[i].getPosition().x << " | " << onScreen[i].getPosition().y << std::endl;
 				window->draw(onScreen[i]);
 			}
 		}
 	}
 	void killNotes()
 	{
-		if (onScreen.size() > 0 && time - 304 > onScreen[onScreen.size() - 1].getTime())
+		if (onScreen.size() > 0 && time - 650 > onScreen[onScreen.size() - 1].getTime())
 		{
 			onScreen.pop_back();
 		}
@@ -65,7 +65,7 @@ public:
 	}
 	void loadNotes()
 	{
-		if (map.empty() == false && time + 2000 >= map.front().getTime())
+		if (map.empty() == false && time + 2500 >= map.front().getTime())
 		{
 			auto it = onScreen.begin();
 			it = onScreen.insert(it, map.front());
@@ -81,6 +81,8 @@ public:
 			for (int i = 0; i <= onScreen.size() - 1; i++)
 			{
 				onScreen[i].setPosition(sf::Vector2f(173 + onScreen[i].getColumn() * 340, 667 - (onScreen[i].getTime() - time) / 3));
+				//onScreen[i].setPosition(sf::Vector2f(0,0));
+				//std::cout << onScreen[i].getPosition().x << std::endl;
 			}
 		}
 	}

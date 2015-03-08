@@ -16,6 +16,8 @@ public:
 		this->column = column;
 		this->pose = pose;
 		this->setTexture(texture);
+		this->setScale(sf::Vector2f(0.2, 0.2));
+		this->setOrigin(500, 500);
 	}
 	
 	long getTime()

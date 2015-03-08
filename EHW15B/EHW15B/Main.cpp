@@ -25,6 +25,7 @@ int main()
 	try {
 		sf::RenderWindow* window(new sf::RenderWindow(/*sf::VideoMode::getDesktopMode()*/ sf::VideoMode(1366,768), "Title", sf::Style::None));
 		//window->setFramerateLimit(120);
+		window->setPosition(sf::Vector2i(0, 0));
 		window->display();
 
 		GameEngine ge(window);
@@ -75,7 +76,7 @@ int main()
 			//myo->unlock(myo::Myo::unlockHold);
 			// In each iteration of our main loop, we run the Myo event loop for a set number of milliseconds.
 			// In this case, we wish to update our display 20 times a second, so we run for 1000/20 milliseconds.
-			hub.run(1000 / 20);
+			hub.run(1000 / 120);
 			// After processing events, we call the print() member function we defined above to print out the values we've
 			// obtained from any events that have occurred.
 			//collector.print();
