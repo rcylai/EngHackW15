@@ -23,5 +23,11 @@
     <ClInclude Include="DataCollector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Note.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

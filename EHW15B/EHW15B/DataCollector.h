@@ -127,6 +127,11 @@ public:
 		std::cout << std::flush;
 	}
 
+	myo::Pose getPose()
+	{
+		return currentPose;
+	}
+
 	// These values are set by onArmSync() and onArmUnsync() above.
 	bool onArm;
 	myo::Arm whichArm;

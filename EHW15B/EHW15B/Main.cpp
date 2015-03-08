@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <string>
 #include <algorithm>
+#include <fstream>
 // ----------------------------------- //
 #include <myo/myo.hpp>
 #include <SFML/Graphics.hpp>
@@ -14,14 +15,25 @@
 #include <SFML/Audio.hpp>
 // ----------------------------------- //
 #include "DataCollector.h"
+#include "GameEngine.h"
+#include "Note.h"
 // ----------------------------------- //
 
 int main()
 {
 	// We catch any exceptions that might occur below -- see the catch statement for more details.
 	try {
-		sf::RenderWindow* window(new sf::RenderWindow(sf::VideoMode(1366, 768), "Title", sf::Style::None));
+		sf::RenderWindow* window(new sf::RenderWindow(/*sf::VideoMode::getDesktopMode()*/ sf::VideoMode(1366,768), "Title", sf::Style::None));
+		//window->setFramerateLimit(120);
 		window->display();
+
+		GameEngine ge(window);
+
+		//ge.loadMap("map.txt");
+		//std::cout << ge.getTitle() << std::endl;
+		//ge.spitOutMap();
+
+		sf::Clock clock;
 
 		myo::Hub hub("com.example.hello-myo");
 
@@ -36,6 +48,7 @@ int main()
 		// If waitForMyo() returned a null pointer, we failed to find a Myo, so exit with an error message.
 		if (!myo) {
 			throw std::runtime_error("Unable to find a Myo!");
+			return 1;
 		}
 
 		// We've found a Myo.
@@ -48,24 +61,44 @@ int main()
 		// Hub::run() to send events to all registered device listeners.
 		hub.addListener(&collector);
 
+		//myo->unlock(myo::Myo::UnlockType::unlockHold);
+
+		//myo->unlock(myo::Myo::unlockHold);
+
+		//long msCount = 0;
+		long elapsedTime = 0;
+
 		// Finally we enter our main loop.
 		while (window->isOpen()) {
+			//myo->unlock(myo::Myo::unlockHold);
 			// In each iteration of our main loop, we run the Myo event loop for a set number of milliseconds.
 			// In this case, we wish to update our display 20 times a second, so we run for 1000/20 milliseconds.
 			hub.run(1000 / 20);
 			// After processing events, we call the print() member function we defined above to print out the values we've
 			// obtained from any events that have occurred.
-			collector.print();
+			//collector.print();
+
+			//std::cout << collector.getPose().toString();
+
 			sf::Event event;
 			while (window->pollEvent(event)) {
-				if (event.type == sf::Event::Closed){
+				if (event.type == sf::Event::Closed)
+				{
 					window->close();
+				}
 				if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
+				{
 					window->close();
 				}
 			}
+			//std::cout << elapsedTime;
+			window->clear(sf::Color(255, 255, 255));
+
+			//draw stuff here
+
 			window->display();
 
+			elapsedTime += clock.restart().asMilliseconds();
 			// If a standard exception occurred, we print out its message and exit.
 		}
 	}
